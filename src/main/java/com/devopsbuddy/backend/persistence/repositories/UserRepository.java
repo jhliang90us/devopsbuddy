@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by tedonema on 29/03/2016.
  */
 @Repository
+@Transactional(readOnly = true)
 public interface UserRepository extends CrudRepository<User, Long> {
 
     /**
@@ -19,8 +20,8 @@ public interface UserRepository extends CrudRepository<User, Long> {
      * @param username The username
      * @return a User given a username or null if not found.
      */
-    public User findByUsername(String username);
-    
+    User findByUsername(String username);
+
     /**
      * Returns a User for the given email or null if none was found.
      * @param email The user's email
